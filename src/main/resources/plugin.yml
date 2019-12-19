@@ -1,0 +1,10 @@
+name: BarragePlugin
+version: @version@
+main: com.github.noonmaru.barrage.BarragePlugin
+depend: [Tap, CustomEntity]
+authors: [Noonmaru]
+website: https://github.com/noonmaru
+commands:
+  barrage:
+    usage: /<command> start | stop
+    permission: barrage.comands

@@ -1,0 +1,8 @@
+fire-tick: 1
+bullet-size: 1
+bullet-damage: 2
+stadium-pos:
+  x: 327.5
+  y: 84
+  z: 1031.5
+stadium-size: 43
