@@ -2,8 +2,10 @@ package com.github.noonmaru.barrage;
 
 import com.github.noonmaru.barrage.process.BarrageProcess;
 import com.github.noonmaru.tap.Tap;
+import com.github.noonmaru.tap.entity.TapPlayer;
 import com.github.noonmaru.tap.item.TapItemStack;
 import com.github.noonmaru.tap.nbt.NBTCompound;
+import com.github.noonmaru.tap.profile.Profile;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -106,6 +108,28 @@ public final class BarragePlugin extends JavaPlugin
         {
             stopProcess();
             sender.sendMessage("탄막 피하기 게임을 종료했습니다.");
+        }
+        else if ("bullet".equalsIgnoreCase(sub))
+        {
+            TapPlayer tapPlayer = TapPlayer.wrapPlayer((Player) sender);
+            TapItemStack item = tapPlayer.getHeldItemMainHand();
+
+            if (item == null || item.isEmpty())
+            {
+                sender.sendMessage("아이템을 들고 시도해주세요");
+                return true;
+            }
+
+            Profile profile = Tap.PROFILE.getProfile(args[1]);
+
+            if (profile == null)
+            {
+                sender.sendMessage("NOT FOUND PROFILE: " + args[1]);
+                return true;
+            }
+
+            setBulletItem(profile.getUniqueId(), item);
+            sender.sendMessage(profile.getName() + " " + item.save().toJsonString());
         }
 
         return true;

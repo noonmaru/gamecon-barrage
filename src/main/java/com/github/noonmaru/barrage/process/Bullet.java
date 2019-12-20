@@ -172,6 +172,7 @@ public class Bullet
 
         if (pos.distance(BarrageConfig.stardiumPos) > BarrageConfig.stadiumSize * 3 / 4)
         {
+            destroy();
             dead = true;
         }
 
@@ -216,7 +217,7 @@ public class Bullet
     {
         Vector pos = lastPath == null ? this.pos : lastPath.to;
 
-        Packet.EFFECT.particle(Particle.END_ROD, (float) pos.x, (float) (pos.y + BarrageConfig.bulletSize / 2), (float) pos.z, 0.0F, 0.0F, 0.0F, 0.2F, 50).sendAll();
+        Packet.EFFECT.particle(Particle.END_ROD, (float) pos.x, (float) (pos.y + BarrageConfig.bulletSize / 2), (float) pos.z, 0.0F, 0.0F, 0.0F, 0.05F, 10).sendAll();
         destroy();
         dead = true;
     }

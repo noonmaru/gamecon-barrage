@@ -20,6 +20,8 @@ public class BarrageConfig
 
     public static double stadiumSize;
 
+    public static double bulletSpeed;
+
     public static void load(ConfigurationSection config)
     {
         fireTick = config.getInt("fire-tick");
@@ -27,6 +29,7 @@ public class BarrageConfig
         bulletDamage = config.getDouble("bullet-damage");
         stardiumPos = getVector(config.getConfigurationSection("stadium-pos"));
         stadiumSize = config.getDouble("stadium-size");
+        bulletSpeed = config.getDouble("bullet-speed");
     }
 
     private static Vector getVector(ConfigurationSection config)

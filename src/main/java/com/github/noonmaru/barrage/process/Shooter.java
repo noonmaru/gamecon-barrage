@@ -25,7 +25,7 @@ public class Shooter extends BarragePlayer
     @Override
     public void onUpdate()
     {
-        if (ticks++ % BarrageConfig.fireTick == 0)
+        if (++ticks % BarrageConfig.fireTick == 0)
             fire();
     }
 
@@ -37,11 +37,11 @@ public class Shooter extends BarragePlayer
         double vectorX = -Math.sin(rotY);
         double vectorZ = Math.cos(rotY);
 
-        Vector pos = new Vector(loc.getX(), BarrageConfig.stardiumPos.y, loc.getZ());
-        Vector velocity = new Vector(vectorX, 0, vectorZ).multiply(1);
+            Vector pos = new Vector(loc.getX(), BarrageConfig.stardiumPos.y, loc.getZ());
+            Vector velocity = new Vector(vectorX, 0, vectorZ).multiply(BarrageConfig.bulletSpeed);
 
-        Bullet bullet = new Bullet(this.process, loc.getWorld(), pos, velocity, this.bulletItem, this);
+            Bullet bullet = new Bullet(this.process, loc.getWorld(), pos, velocity, this.bulletItem, this);
 
-        process.addBullet(bullet);
+            process.addBullet(bullet);
     }
 }
